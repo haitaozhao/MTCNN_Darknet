@@ -1,6 +1,7 @@
 # compile darknet
 cd darknet
 make
+cd ..
 echo "Darknet compiled! "
 echo "============================================="
 
