@@ -5,7 +5,7 @@
 
 void run_mtcnn(int argc, char **argv)
 {
-    int help = find_int_arg(argc, argv, "--help", 0);
+    int help = find_arg(argc, argv, "--help");
     if(help || argc < 2){
         fprintf(stderr, "Usage:\n");
         fprintf(stderr, "    ./mtcnn <function>\n");
