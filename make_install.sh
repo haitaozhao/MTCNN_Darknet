@@ -22,7 +22,7 @@ cd ..
 echo "============================================="
 
 echo "MTCNN compiled!  You can use MTCNN like: "
-echo "	./mtcnn detect <image path>"
+echo "	./mtcnn --help"
 
 
 
