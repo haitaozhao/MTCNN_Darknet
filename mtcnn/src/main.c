@@ -31,7 +31,7 @@ void run_mtcnn(int argc, char **argv)
         return;
     }
 
-    int mode = find_int_arg(argc, argv, "-v", 0);
+    int mode = find_int_arg(argc, argv, "-v", 1);
     if (mode == 0){ // Image mode
         run_image(argc, argv);
     } else {        // Video mode

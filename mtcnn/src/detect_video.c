@@ -59,33 +59,33 @@ void* detect_frame_in_thread(void* ptr)
 #else
     IplImage* iplFrame = image_to_ipl(frame);
     for (int i = 0; i < g_ndets; i++ ){
-            detect det = g_dets[i];
-            float score = det.score;
-            bbox bx = det.bx;
-            landmark mk = det.mk;
+        detect det = g_dets[i];
+        float score = det.score;
+        bbox bx = det.bx;
+        landmark mk = det.mk;
 
-            char buff[256];
-            sprintf(buff, "%.2f", score);
-            cvPutText(iplFrame, buff, cvPoint((int)bx.x1, (int)bx.y1),
-                        &font, cvScalar(0, 0, 255, 0));
+        char buff[256];
+        sprintf(buff, "%.2f", score);
+        cvPutText(iplFrame, buff, cvPoint((int)bx.x1, (int)bx.y1),
+                    &font, cvScalar(0, 0, 255, 0));
 
-            cvRectangle(iplFrame, cvPoint((int)bx.x1, (int)bx.y1),
-                        cvPoint((int)bx.x2, (int)bx.y2),
-                        cvScalar(255, 255, 255, 0), 1, 8, 0);
+        cvRectangle(iplFrame, cvPoint((int)bx.x1, (int)bx.y1),
+                    cvPoint((int)bx.x2, (int)bx.y2),
+                    cvScalar(255, 255, 255, 0), 1, 8, 0);
 
-            cvCircle(iplFrame, cvPoint((int)mk.x1, (int)mk.y1),
-                        1, cvScalar(255, 255, 255, 0), 1, 8, 0);
-            cvCircle(iplFrame, cvPoint((int)mk.x2, (int)mk.y2),
-                        1, cvScalar(255, 255, 255, 0), 1, 8, 0);
-            cvCircle(iplFrame, cvPoint((int)mk.x3, (int)mk.y3),
-                        1, cvScalar(255, 255, 255, 0), 1, 8, 0);
-            cvCircle(iplFrame, cvPoint((int)mk.x4, (int)mk.y4),
-                        1, cvScalar(255, 255, 255, 0), 1, 8, 0);
-            cvCircle(iplFrame, cvPoint((int)mk.x5, (int)mk.y5),
-                        1, cvScalar(255, 255, 255, 0), 1, 8, 0);
-        }
-        cvShowImage(winname, iplFrame);
-        cvWaitKey(1);
+        cvCircle(iplFrame, cvPoint((int)mk.x1, (int)mk.y1),
+                    1, cvScalar(255, 255, 255, 0), 1, 8, 0);
+        cvCircle(iplFrame, cvPoint((int)mk.x2, (int)mk.y2),
+                    1, cvScalar(255, 255, 255, 0), 1, 8, 0);
+        cvCircle(iplFrame, cvPoint((int)mk.x3, (int)mk.y3),
+                    1, cvScalar(255, 255, 255, 0), 1, 8, 0);
+        cvCircle(iplFrame, cvPoint((int)mk.x4, (int)mk.y4),
+                    1, cvScalar(255, 255, 255, 0), 1, 8, 0);
+        cvCircle(iplFrame, cvPoint((int)mk.x5, (int)mk.y5),
+                    1, cvScalar(255, 255, 255, 0), 1, 8, 0);
+    }
+    cvShowImage(winname, iplFrame);
+    cvWaitKey(1);
 #endif
     printf("\033[2J");
     printf("\033[1;1H");
@@ -113,7 +113,7 @@ void run_video(int argc, char **argv)
     printf("\n\n");
 
     printf("Initializing Capture...");
-    int index = find_int_arg(argc, argv, "--index", -1);
+    int index = find_int_arg(argc, argv, "--index", 0);
     if (index < 0){
         char* filepath = find_char_arg(argc, argv, "--path", "../images/test.mp4");
         if(0==strcmp(filepath, "../images/test.mp4")){
