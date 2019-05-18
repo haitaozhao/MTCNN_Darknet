@@ -17,7 +17,7 @@ void run_mtcnn(int argc, char **argv)
         fprintf(stderr, "    -p         thresh for PNet,default `0.8`;\n");
         fprintf(stderr, "    -r         thresh for RNet,defalut `0.8`;\n");
         fprintf(stderr, "    -o         thresh for ONet,defalut `0.8`;\n");
-        fprintf(stderr, "    --minface  minimal face,   default `48.0`;\n");
+        fprintf(stderr, "    --minface  minimal face,   default `96.0`;\n");
         fprintf(stderr, "    --scale    resize factor,  default `0.79`;\n");
         fprintf(stderr, "    --stride                   default `2`;\n");
         fprintf(stderr, "    --cellsize                 default `12`;\n");

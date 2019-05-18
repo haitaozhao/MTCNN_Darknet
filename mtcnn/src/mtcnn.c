@@ -66,7 +66,7 @@ params initParams(int argc, char **argv)
 {
     params p;
 
-    p.min_face = find_float_arg(argc, argv, "--minface", 48.0);
+    p.min_face = find_float_arg(argc, argv, "--minface", 96.0);
     p.pthresh  = find_float_arg(argc, argv, "-p", 0.8);
     p.rthresh  = find_float_arg(argc, argv, "-r", 0.8);
     p.othresh  = find_float_arg(argc, argv, "-o", 0.8);

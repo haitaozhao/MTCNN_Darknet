@@ -55,7 +55,7 @@ void* detect_frame_in_thread(void* ptr)
         draw_box_width(frame, bx.x1, bx.y1, bx.x2, bx.y2, 3, 0, 0, 1);  // b, g, r
     }
 #else
-    IplImage* iplFrame = image_to_ipl(frame);
+    IplImage* iplFrame = image_to_ipl(g_imFrame[(g_index + 2) % 3]);
     for (int i = 0; i < g_ndets; i++ ){
         detect det = g_dets[i];
         float score = det.score;
@@ -82,8 +82,7 @@ void* detect_frame_in_thread(void* ptr)
         cvCircle(iplFrame, cvPoint((int)mk.x5, (int)mk.y5),
                     1, cvScalar(255, 255, 255, 0), 1, 8, 0);
     }
-    cvShowImage(winname, iplFrame);
-    cvWaitKey(1);
+    g_imFrame[(g_index + 2) % 3] = ipl_to_image(iplFrame);
 #endif
     printf("\033[2J");
     printf("\033[1;1H");
