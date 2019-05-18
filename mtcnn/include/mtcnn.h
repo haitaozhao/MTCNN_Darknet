@@ -3,6 +3,8 @@
 
 #include <opencv/cv.h>
 #include <opencv2/videoio/videoio_c.h>
+#include <opencv2/highgui/highgui_c.h>
+#include <opencv2/imgcodecs/imgcodecs_c.h>
 #include <math.h>
 #include "darknet.h"
 #include "list.h"

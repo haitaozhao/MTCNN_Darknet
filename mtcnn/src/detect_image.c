@@ -8,18 +8,21 @@ void run_image(int argc, char **argv)
     network *onet = load_mtcnn_net("ONet");
     printf("\n\n");
 
+    printf("Loading image...");
     char* filepath = find_char_arg(argc, argv, "--path", "../images/test.jpg");
     if(0==strcmp(filepath, "../images/test.jpg")){
         fprintf(stderr, "Using default: %s\n", filepath);
     }
-    params p = initParams(argc, argv);
-
     image im = load_image_color(filepath, 0, 0);
     im = rgb_to_bgr(im);
-    show_im(im, "image", 10);
+    show_im(im, "image", 0);
+    printf("OK!\n");
 
-    int n = 0;
-    detect* dets = calloc(0, sizeof(detect));
+    printf("Initializing detection...");
+    params p = initParams(argc, argv);
+    detect* dets = calloc(0, sizeof(detect)); int n = 0;
+    printf("OK!\n");
+    
     double start = 0;
     double endure = 0;
 
@@ -27,6 +30,7 @@ void run_image(int argc, char **argv)
     detect_image(pnet, rnet, onet, im, &n, &dets, p);
     endure = what_time_is_it_now() - start;
     printf("Predicted in %.2f seconds. FPS: %.2f\n", endure, 1 / endure);
+    printf("Objects:%d\n", n);
     show_detect(im, dets, n, "mtcnn", 0, 1, 1, 1);
 
     free_image(im);

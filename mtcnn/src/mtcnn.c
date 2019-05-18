@@ -70,7 +70,7 @@ params initParams(int argc, char **argv)
     p.pthresh  = find_float_arg(argc, argv, "-p", 0.8);
     p.rthresh  = find_float_arg(argc, argv, "-r", 0.6);
     p.othresh  = find_float_arg(argc, argv, "-o", 0.7);
-    p.scale    = find_float_arg(argc, argv, "--scale", 0.709);
+    p.scale    = find_float_arg(argc, argv, "--scale", 0.79);
     p.stride   = find_int_arg(argc, argv, "--stride", 2);
     p.cellsize = find_int_arg(argc, argv, "--cellsize", 12);
 

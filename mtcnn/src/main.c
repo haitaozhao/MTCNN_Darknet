@@ -13,11 +13,11 @@ void run_mtcnn(int argc, char **argv)
         fprintf(stderr, "Optional:\n");
         fprintf(stderr, "    -v         video mode,     default `0`, image mode;\n");
         fprintf(stderr, "    --path     file path,      default `../images/test.*`;\n");
-        fprintf(stderr, "    --index    camera index,   default `-1`;\n");
+        fprintf(stderr, "    --index    camera index,   default `0`;\n");
         fprintf(stderr, "    -p         thresh for PNet,default `0.8`;\n");
         fprintf(stderr, "    -r         thresh for RNet,defalut `0.6`;\n");
         fprintf(stderr, "    -o         thresh for ONet,defalut `0.7`;\n");
-        fprintf(stderr, "    --minface  minimal face,   default `12.`;\n");
+        fprintf(stderr, "    --minface  minimal face,   default `36.`;\n");
         fprintf(stderr, "    --scale    resize factor,  default `0.709`;\n");
         fprintf(stderr, "    --stride                   default `2`;\n");
         fprintf(stderr, "    --cellsize                 default `12`;\n");
@@ -31,7 +31,7 @@ void run_mtcnn(int argc, char **argv)
         return;
     }
 
-    int mode = find_int_arg(argc, argv, "-v", 1);
+    int mode = find_int_arg(argc, argv, "-v", 0);
     if (mode == 0){ // Image mode
         run_image(argc, argv);
     } else {        // Video mode

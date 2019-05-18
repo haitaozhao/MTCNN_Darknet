@@ -25,9 +25,7 @@ static network* onet;
 image _frame()
 {
     IplImage* iplFrame = cvQueryFrame(g_cvCap);
-    // image src = ipl_to_image(iplFrame);
-    // image dst = rgb_to_bgr(src);
-    // free_image(src);
+    // IplImage* iplFrame = cvLoadImage("/home/louishsu/Desktop/test.jpg", CV_LOAD_IMAGE_ANYCOLOR);
     image dst = rgb_to_bgr(ipl_to_image(iplFrame));
     return dst;
 }
@@ -134,7 +132,7 @@ void run_video(int argc, char **argv)
     g_imFrame[1] = copy_image(g_imFrame[0]);
     g_imFrame[2] = copy_image(g_imFrame[0]);
 
-    cvNamedWindow(winname);
+    cvNamedWindow(winname, CV_WINDOW_AUTOSIZE);
     cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, 0.5, 0.5, 1, 2, 8);
     printf("OK!\n");
 
