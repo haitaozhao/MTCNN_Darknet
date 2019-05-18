@@ -26,7 +26,7 @@ image _frame()
 {
     IplImage* iplFrame = cvQueryFrame(g_cvCap);
     // IplImage* iplFrame = cvLoadImage("/home/louishsu/Desktop/test.jpg", CV_LOAD_IMAGE_ANYCOLOR);
-    image dst = rgb_to_bgr(ipl_to_image(iplFrame));
+    image dst = ipl_to_image(iplFrame);
     return dst;
 }
 
@@ -52,7 +52,7 @@ void* detect_frame_in_thread(void* ptr)
     for (int i = 0; i < g_ndets; i++ ){
         detect det = g_dets[i];
         bbox bx = det.bx;
-        draw_box_width(frame, bx.x1, bx.y1, bx.x2, bx.y2, 3, 1, 0, 0);
+        draw_box_width(frame, bx.x1, bx.y1, bx.x2, bx.y2, 3, 0, 0, 1);  // b, g, r
     }
 #else
     IplImage* iplFrame = image_to_ipl(frame);
@@ -94,7 +94,7 @@ void* detect_frame_in_thread(void* ptr)
 
 void* display_frame_in_thread(void* ptr)
 {
-    int c = show_image(g_imFrame[(g_index + 1) % 3], winname, 1);
+    int c = show_image(rgb_to_bgr(g_imFrame[(g_index + 1) % 3]), winname, 1);
     if (c != -1) c = c%256;
     if (c == 27) {
         g_videoDone = 1;
